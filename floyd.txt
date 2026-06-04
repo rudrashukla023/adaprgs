@@ -17,7 +17,7 @@ int main() {
         }
     }
 
-    // Floyd–Warshall algorithm
+    
     for (k = 0; k < n; ++k)
         for (u = 0; u < n; ++u)
             for (v = 0; v < n; ++v)
