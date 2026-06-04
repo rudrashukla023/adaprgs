@@ -1,37 +1,26 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void warshall(int p[10][10],int n)
-{
-    int i,j,k;
+int main() {
+    int n, u, v, k;
+    printf("N: ");
+    scanf("%d", &n);
 
-    for(k=1;k<=n;k++)
-        for(i=1;i<=n;i++)
-            for(j=1;j<=n;j++)
-                p[i][j]=p[i][j] || (p[i][k] && p[k][j]);
-}
+    short P[n][n];
+    printf("Input Adjacency Matrix:-\n");
+    for (u = 0; u < n; ++u)
+        for (v = 0; v < n; ++v)
+            scanf("%hd", &P[u][v]);
 
-int main()
-{
-    int p[10][10],n,i,j;
+    for (k = 0; k < n; ++k)
+        for (u = 0; u < n; ++u)
+            for (v = 0; v < n; ++v)
+                P[u][v] = P[u][v] || (P[u][k] && P[k][v]);
 
-    printf("Enter number of vertices: ");
-    scanf("%d",&n);
-
-    printf("Enter adjacency matrix:\n");
-
-    for(i=1;i<=n;i++)
-        for(j=1;j<=n;j++)
-            scanf("%d",&p[i][j]);
-
-    warshall(p,n);
-
-    printf("\nTransitive Closure Matrix:\n");
-
-    for(i=1;i<=n;i++)
-    {
-        for(j=1;j<=n;j++)
-            printf("%d ",p[i][j]);
-
+    printf("\nTransitive Closure:-\n");
+    for (u = 0; u < n; ++u) {
+        for (v = 0; v < n; ++v)
+            printf("%d ", P[u][v]);
         printf("\n");
     }
 
